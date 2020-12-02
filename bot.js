@@ -42,7 +42,7 @@ client.on('message', message => {
                     if (time.substring(0,4) === '9:00' && time.includes('AM'))
                         message.send('Dobro jutro :)')
                     else if (time.substring(0,4) === '5:00' && time.includes('PM'))
-                        message.send('Dobro jutro :)')
+                        message.send('Poz :)')
                     else if (timestamps[0].includes(time.substring(0,4)))
                         message.channel.send('PAUYA <3 @everyone')
                     else if (timestamps[1].includes(time.substring(0,4)))
