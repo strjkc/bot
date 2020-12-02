@@ -26,13 +26,13 @@ const timestamps = [
 client.on('ready', () => {
   console.log('I am ready!');
 });
-
 client.on('message', message => {
+    let id;
     console.log(message.content)
     if (message.content.includes('!startat')){
         console.log('Starting')
         const r = message.content.substring(9)
-        const id = setInterval(() =>{
+        id = setInterval(() =>{
             let time = new Date().toLocaleTimeString().substring(0,4)
             if (time === r){
                 clearInterval(id)
@@ -51,7 +51,8 @@ client.on('message', message => {
                 }, 60000)
             }
         },1000)        
-    }
+    } else if (message.content === '!terminate')
+        clearInterval(id)
 
 })
 
