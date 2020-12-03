@@ -44,32 +44,36 @@ const testSpamps = [
         '7:58',
     ]
 ]
-
+const timedMessages = id => {
+    //clear outer scope interval if exists
+    if (id)
+        clearInterval(id)
+    setInterval(() =>{
+    let currentTime = new Date().toLocaleTimeString();
+    let hours = currentTime.substring(0, 4) 
+    if (hours === '8:00' && currentTime.includes('AM'))
+        message.send('Dobro jutro :)');
+    else if (hours === '4:00' && currentTime.includes('PM'))
+        message.send('Poz :)');
+    else if (timestamps[0].includes(hours))
+        message.channel.send('PAUYA <3 @everyone');
+    else if (timestamps[1].includes(hours))
+        message.channel.send('GOTOVA PAUYA :( @everyone');
+}, 60000);
+}
 client.on('ready', () => {
   console.log('I am ready!');
 });
 client.on('message', message => {
     if (message.content.toLocaleLowerCase().includes('djilas'))
         message.channel.send('lopov')
-    let id;
     console.log('M content', message.content)
     if (message.content.includes('!startat')){
-        const r = message.content.substring(9)
-        id = setInterval(() =>{
+        const inputedTime = message.content.substring(9)
+        let id = setInterval(() =>{
             let time = new Date().toLocaleTimeString().substring(0,4)
-            if (time === r){
-                clearInterval(id)
-                setInterval( () => {
-                    let time2 = new Date().toLocaleTimeString()
-                    if (time2.substring(0,4) === '8:00' && time2.includes('AM'))
-                        message.send('Dobro jutro :)')
-                    else if (time2.substring(0,4) === '4:00' && time2.includes('PM'))
-                        message.send('Poz :)')
-                    else if (timestamps[0].includes(time2.substring(0,4)))
-                        message.channel.send('PAUYA <3 @everyone')
-                    else if (timestamps[1].includes(time2.substring(0,4)))
-                        message.channel.send('GOTOVA PAUYA :( @everyone')
-                }, 60000)
+            if (time === inputedTime){
+                timedMessages(id)
             }
         },1000)        
     } else if (message.content === '!terminate')
