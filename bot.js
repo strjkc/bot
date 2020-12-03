@@ -49,7 +49,7 @@ client.on('ready', () => {
   console.log('I am ready!');
 });
 client.on('message', message => {
-    if (message.content.toLocaleLowerCase() === 'djilas')
+    if (message.content.toLocaleLowerCase().contains('djilas'))
         message.channel.send('lopov')
     let id;
     console.log('M content', message.content)
