@@ -7,7 +7,7 @@ const timestamps = [
         '9:50',
         '10:50',
         '11:50',
-        '12:20',
+        '1:20',
         '2:20',
         '3:20',
 
@@ -65,9 +65,9 @@ client.on('message', message => {
                         message.send('Dobro jutro :)')
                     else if (time2.substring(0,4) === '4:00' && time2.includes('PM'))
                         message.send('Poz :)')
-                    else if (testSpamps[0].includes(time2.substring(0,4)))
+                    else if (timestamps[0].includes(time2.substring(0,4)))
                         message.channel.send('PAUYA <3 @everyone')
-                    else if (testSpamps[1].includes(time2.substring(0,4)))
+                    else if (timestamps[1].includes(time2.substring(0,4)))
                         message.channel.send('GOTOVA PAUYA :( @everyone')
                 }, 60000)
             }
@@ -78,5 +78,4 @@ client.on('message', message => {
 })
 
 
-// Log our bot in using the token from https://discord.com/developers/applications
 client.login(config.token);
