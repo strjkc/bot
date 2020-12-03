@@ -28,25 +28,27 @@ client.on('ready', () => {
 });
 client.on('message', message => {
     let id;
-    console.log(message.content)
+    console.log('M content', message.content)
     if (message.content.includes('!startat')){
         console.log('Starting')
         const r = message.content.substring(9)
+        console.log('r', r)
         id = setInterval(() =>{
             let time = new Date().toLocaleTimeString().substring(0,4)
+            console.log('time/first interval', time)
             if (time === r){
                 clearInterval(id)
                 setInterval( () => {
-                    let time = new Date().toLocaleTimeString()
-                    console.log(time)
-                    console.log(timestamps[0].includes(time))
-                    if (time.substring(0,4) === '9:00' && time.includes('AM'))
+                    let time2 = new Date().toLocaleTimeString()
+                    console.log(time2)
+                    console.log(timestamps[0].includes(time2))
+                    if (time2.substring(0,4) === '9:00' && time2.includes('AM'))
                         message.send('Dobro jutro :)')
-                    else if (time.substring(0,4) === '5:00' && time.includes('PM'))
+                    else if (time2.substring(0,4) === '5:00' && time2.includes('PM'))
                         message.send('Poz :)')
-                    else if (timestamps[0].includes(time.substring(0,4)))
+                    else if (timestamps[0].includes(time2.substring(0,4)))
                         message.channel.send('PAUYA <3 @everyone')
-                    else if (timestamps[1].includes(time.substring(0,4)))
+                    else if (timestamps[1].includes(time2.substring(0,4)))
                         message.channel.send('GOTOVA PAUYA :( @everyone')
                 }, 60000)
             }
