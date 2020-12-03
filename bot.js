@@ -44,7 +44,9 @@ const testSpamps = [
         '7:58',
     ]
 ]
-const timedMessages = id => {
+
+//ckeck if the current server time matchs one of the required times, if yes send message 
+const timedMessages = (id, message) => {
     //clear outer scope interval if exists
     if (id)
         clearInterval(id)
@@ -61,24 +63,28 @@ const timedMessages = id => {
         message.channel.send('GOTOVA PAUYA :( @everyone');
 }, 60000);
 }
+
+// starts the timedMessages when a precise time that was inputed is reached - ensure that the functions are ran at 00 seconds
+const startTimer = (message) => {
+    const inputedTime = message.content.substring(9)
+    let id = setInterval(() =>{
+        let time = new Date().toLocaleTimeString().substring(0,4)
+        if (time === inputedTime)
+            timedMessages(id, message)
+        },1000) 
+}
+
 client.on('ready', () => {
   console.log('I am ready!');
 });
+
 client.on('message', message => {
     if (message.content.toLocaleLowerCase().includes('djilas'))
         message.channel.send('lopov')
-    console.log('M content', message.content)
-    if (message.content.includes('!startat')){
-        const inputedTime = message.content.substring(9)
-        let id = setInterval(() =>{
-            let time = new Date().toLocaleTimeString().substring(0,4)
-            if (time === inputedTime){
-                timedMessages(id)
-            }
-        },1000)        
-    } else if (message.content === '!terminate')
+    if (message.content.toLocaleLowerCase().includes('!startat'))
+        startTimer(message)
+    else if (message.content === '!terminate')
         clearInterval(id)
-
 })
 
 
