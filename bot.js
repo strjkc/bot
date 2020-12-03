@@ -35,7 +35,7 @@ client.on('message', message => {
         console.log('r', r)
         id = setInterval(() =>{
             let time = new Date().toLocaleTimeString().substring(0,4)
-            console.log('time/first interval', time)
+            console.log('time/first interval', time, " : " ,r)
             if (time === r){
                 clearInterval(id)
                 setInterval( () => {
