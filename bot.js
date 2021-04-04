@@ -51,38 +51,14 @@ client.on('ready', () => {
 client.on('message', message => {
     if (message.content.toLocaleLowerCase().includes('djilas'))
         message.channel.send('lopov')
-    if (message.content.toLocaleLowerCase().includes('jutro'))
-        message.channel.send('Jutro!')
-    if (message.content.toLocaleLowerCase().includes('poz '))
-        message.channel.send('poz bagro')
-    if (message.content.toLocaleLowerCase().includes('strahinja'))
-        message.channel.send('strahinja == your absolute overlord')
-    if (message.content.toLocaleLowerCase().includes('deda'))
-        message.channel.send('gradjanin drugog reda')
-    let id;
-    console.log('M content', message.content)
-    if (message.content.includes('!startat')){
-        const r = message.content.substring(9)
-        id = setInterval(() =>{
-            let time = new Date().toLocaleTimeString().substring(0,4)
-            if (time === r){
-                clearInterval(id)
-                setInterval( () => {
-                    let time2 = new Date().toLocaleTimeString()
-                    if (time2.substring(0,4) === '8:00' && time2.includes('AM'))
-                        message.send('Dobro jutro :)')
-                    else if (time2.substring(0,4) === '4:00' && time2.includes('PM'))
-                        message.send('Poz :)')
-                    else if (timestamps[0].includes(time2.substring(0,4)))
-                        message.channel.send('PAUYA <3 @everyone')
-                    else if (timestamps[1].includes(time2.substring(0,4)))
-                        message.channel.send('GOTOVA PAUYA :( @everyone')
-                }, 60000)
-            }
-        },1000)        
-    } else if (message.content === '!terminate')
-        clearInterval(id)
-
+    else if (message.content.toLocaleLowerCase().includes('jutro'))
+        message.channel.send('Pocinje jos jedan dan u paklu :)')
+    else if (message.content.toLocaleLowerCase().includes('poz '))
+        message.channel.send('caos bagro')
+    else if (message.content.toLocaleLowerCase().includes('strahinja'))
+        message.channel.send('straja == your absolute overlord')
+    else if (message.content.toLocaleLowerCase().includes('deda'))
+        message.channel.send('gradjanin drugog reda')    
 })
 
 
