@@ -51,6 +51,14 @@ client.on('ready', () => {
 client.on('message', message => {
     if (message.content.toLocaleLowerCase().includes('djilas'))
         message.channel.send('lopov')
+    if (message.content.toLocaleLowerCase().includes('jutro'))
+        message.channel.send('Jutro!')
+    if (message.content.toLocaleLowerCase().includes('poz '))
+        message.channel.send('poz bagro')
+    if (message.content.toLocaleLowerCase().includes('strahinja'))
+        message.channel.send('strahinja == your absolute overlord')
+    if (message.content.toLocaleLowerCase().includes('deda'))
+        message.channel.send('gradjanin drugog reda')
     let id;
     console.log('M content', message.content)
     if (message.content.includes('!startat')){
