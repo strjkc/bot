@@ -53,7 +53,7 @@ client.on('message', message => {
         message.channel.send('lopov')
     else if (message.content.toLocaleLowerCase().includes('jutro'))
         message.channel.send('Pocinje jos jedan dan u paklu :)')
-    else if (message.content.toLocaleLowerCase().includes('poz '))
+    else if (message.content.toLocaleLowerCase().includes('poz ') || message.content.toLocaleLowerCase() === 'poz')
         message.channel.send('caos bagro')
     else if (message.content.toLocaleLowerCase().includes('strahinja'))
         message.channel.send('straja == your absolute overlord')
